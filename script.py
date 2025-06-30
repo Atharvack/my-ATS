@@ -1,6 +1,7 @@
 import subprocess
 import os
-import tika
+import tika 
+from tika import parser
 tika.TikaClientOnly = True
 import PyPDF2  
 
@@ -24,9 +25,11 @@ def extract_text_pypdf(pdf_path):
 
 pdf_file = input("Enter path: ").strip()
 if not os.path.isfile(pdf_file):
-    print("❌ File not found. Please check the path and try again.")
+    print(" File not found. Please check the path and try again.")
     exit(1)
 
 extract_text_tika(pdf_file)
 extract_metadata_exiftool(pdf_file)
 extract_text_pypdf(pdf_file)
+
+#/home/atharva/Downloads/Resumes/New York/ML Resume/Atharva_ML_1.3.pdf
