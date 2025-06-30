@@ -34,4 +34,3 @@ with open(output_file, "w", encoding="utf-8") as f:
 print(f"\n All ATS-style output written to: {output_file}")
 
 
-#/home/atharva/Downloads/Resumes/New York/ML Resume/Atharva_ML_1.3.pdf
