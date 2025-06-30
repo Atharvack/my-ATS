@@ -1,7 +1,8 @@
 import subprocess
 import os
-from tika import parser  # pip install tika
-import PyPDF2  # pip install PyPDF2
+import tika
+tika.TikaClientOnly = True
+import PyPDF2  
 
 def extract_text_tika(pdf_path):
     raw = parser.from_file(pdf_path)
@@ -25,7 +26,7 @@ pdf_file = input("Enter path: ").strip()
 if not os.path.isfile(pdf_file):
     print("❌ File not found. Please check the path and try again.")
     exit(1)
-    
+
 extract_text_tika(pdf_file)
 extract_metadata_exiftool(pdf_file)
 extract_text_pypdf(pdf_file)
