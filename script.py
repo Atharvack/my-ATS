@@ -15,13 +15,6 @@ def extract_metadata_exiftool(pdf_path, f):
     output = subprocess.check_output(['exiftool', pdf_path], universal_newlines=True)
     f.write(output)
 
-def extract_text_pypdf(pdf_path, f):
-    f.write("\n\n=== [Text via PyPDF2] ===\n\n")
-    with open(pdf_path, 'rb') as file:
-        reader = PyPDF2.PdfReader(file)
-        for i, page in enumerate(reader.pages):
-            f.write(f"\n--- Page {i + 1} ---\n")
-            f.write(page.extract_text() or "[No text on this page]")
 
 pdf_file = input("Enter path: ").strip()
 if not os.path.isfile(pdf_file):
@@ -36,7 +29,7 @@ with open(output_file, "w", encoding="utf-8") as f:
     f.write("=" * 60 + "\n")
     extract_text_tika(pdf_file, f)
     extract_metadata_exiftool(pdf_file, f)
-    extract_text_pypdf(pdf_file, f)
+    
 
 print(f"\n All ATS-style output written to: {output_file}")
 
